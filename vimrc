@@ -224,8 +224,8 @@ let g:airline_right_sep=''
 
 " Colorscheme {{{
 
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
 
 " }}}
 

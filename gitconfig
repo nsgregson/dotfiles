@@ -1,6 +1,5 @@
 [user]
-	name = Joshua Steele
-	email = joshukraine@gmail.com
+
 [alias]
 	co = checkout
 	st = status
@@ -20,8 +19,6 @@
 	autocrlf = false
 	safecrlf = true
 	editor = vim
-	excludesfile = /Users/joshukraine/.gitignore_global
-[credential]
-	helper = osxkeychain
+	excludesfile = ~/.gitignore_global
 [push]
 	default = matching

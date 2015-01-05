@@ -1,5 +1,5 @@
 # Exports {{{
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 export EDITOR="vim"
 export BUNDLER_EDITOR="vim"
 export MANPAGER="less -X" # Don’t clear the screen after quitting a manual page
@@ -57,10 +57,6 @@ alias t4a='tree -FLa 4'
 # Upgrade Oh My Zshell
 alias upz='upgrade_oh_my_zsh'
 
-# Show/Hide hidden files in Finder
-alias saf='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
-alias haf='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
-
 # Rails
 alias rc='rails console'
 alias rg='rails generate'
@@ -75,18 +71,6 @@ alias startpost='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/se
 alias stoppost='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
 alias statpost='ps aux | ag postgres'
 
-# Homebrew
-alias bu='brew update'
-alias bg='brew upgrade'
-alias bo='brew outdated'
-alias bd='brew doctor'
-alias bc='brew cleanup'
-
-# Finder
-alias o='open . &'
-
-# Speedtest
-alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 # }}}
 
 
@@ -165,17 +149,6 @@ alias tka="tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}" # tmux
 HISTSIZE=20000
 SAVEHIST=20000
 HISTFILE=~/.zsh_history
-# }}}
-
-
-# cdpath {{{
-setopt auto_cd
-cdpath=($HOME/dev $HOME/dev/projects $HOME/Sites $HOME/dev/virtual_machines $HOME)
-# }}}
-
-
-# Homebrew {{{
-source $(brew --prefix nvm)/nvm.sh
 # }}}
 
 
