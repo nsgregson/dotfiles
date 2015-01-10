@@ -22,6 +22,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Vim specific
 alias vi="vim"
+alias ct='ctags -R -V --exclude=.git'
 
 # Jump to quick edits
 alias ez='vim ~/.zshrc'
@@ -37,6 +38,7 @@ alias du='du -h'
 alias mkdir='mkdir -p'
 alias src='source ~/.zshrc'
 alias pi='ping -Anc 5 8.8.8.8'
+alias path="echo $PATH | tr -s ':' '\n'"
 
 # List direcory contents
 alias lsa='ls -lahF'

@@ -173,13 +173,9 @@ Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-obsession'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'vim-ruby/vim-ruby'
@@ -194,11 +190,18 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'bufexplorer.zip'
 Plugin 'greplace.vim'
 Plugin 'Rename'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
+
+" Related to vim-snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -207,32 +210,9 @@ filetype plugin indent on    " required
 " }}}
 
 
-" Airline (status line) {{{
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_symbols.linenr = 'Ln'
-let g:airline_powerline_fonts=1
-" let g:airline_theme='powerlineish'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
-" }}}
-
-
-" Colorscheme {{{
-
-" set background=dark
-" colorscheme solarized
-
-" }}}
-
-
 " Mappings {{{
 
-let mapleader = ","
+let mapleader = " "
 
 " General Vim
 map <Leader>x :Explore
@@ -242,6 +222,7 @@ map <Leader>w <C-w>
 map <Leader>ra :%s/
 map <Leader>p :set paste<cr>o<esc>"*]p:set nopaste<cr> " Fix indentation on paste
 map <Leader>i mmgg=G`m<cr> " For indenting code
+map <Leader>ob :Obsession<cr>
 
 " Rails
 map <Leader>vm :RVmodel<cr>
@@ -364,5 +345,28 @@ fun! SetDiffColors()
   highlight DiffText   cterm=bold ctermfg=white ctermbg=DarkRed
 endfun
 autocmd FilterWritePre * call SetDiffColors()
+
+" }}}
+
+
+" Airline (status line) {{{
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.linenr = 'Ln'
+let g:airline_powerline_fonts=1
+" let g:airline_theme='powerlineish'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+" }}}
+
+
+" Colorscheme {{{
+
+set background=dark
+colorscheme solarized
 
 " }}}
