@@ -78,7 +78,11 @@ alias statpost='ps aux | ag postgres'
 
 # Ruby {{{
 function get_ruby_version() {
-  ruby -v | awk '{print $1 " " $2}'
+  if command -v ruby >/dev/null; then
+    ruby -v | awk '{print $1 " " $2}'
+  else
+    echo "Ruby not installed"
+  fi
 }
 # }}}
 
@@ -155,6 +159,8 @@ HISTFILE=~/.zsh_history
 
 
 # Rbenv {{{
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if type rbenv >/dev/null 2>&1; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 # }}}
