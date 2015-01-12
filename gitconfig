@@ -1,5 +1,6 @@
 [user]
-
+    name = Joshua Steele
+    email = joshukraine@gmail.commit
 [alias]
 	co = checkout
 	st = status
