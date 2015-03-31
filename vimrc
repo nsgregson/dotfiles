@@ -49,8 +49,8 @@ set nowrap
 " Allow backspace to delete end of line, indent and start of line characters
 set backspace=indent,eol,start
 
-" Convert tabs to spaces
-set expandtab
+" Convert tabs to spaces, all file types
+" set expandtab
 
 " Set tab size in spaces (this is for manual indenting)
 set tabstop=4
@@ -63,7 +63,7 @@ set number
 set relativenumber
 
 " Highlight tailing whitespace
-set list listchars=tab:\ \ ,trail:·
+set list listchars=tab:»·,trail:·
 
 " Get rid of the delay when pressing O (for example)
 " http://stackoverflow.com/questions/2158516/vim-delay-before-o-opens-a-new-line
@@ -71,9 +71,6 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 
 " Always show status bar
 set laststatus=2
-
-" Set the status line to something useful
-set statusline=%f\ %=L:%l/%L\ %c\ (%p%%)
 
 " Hide the toolbar
 set guioptions-=T
@@ -93,10 +90,11 @@ set shortmess+=I
 
 " Better splits (new windows appear below and to the right)
 set splitbelow
-set splitright
+" set splitright
 
-" Highlight the current line
+" Highlight the current line and column
 set cursorline
+set cursorcolumn
 
 " Ensure Vim doesn't beep at you every time you make a mistype
 set visualbell
@@ -130,11 +128,6 @@ set t_Co=256
 
 set fillchars+=vert:\ 
 
-" set backupdir=~/.tmp
-" set directory=~/.tmp              " Don't clutter my dirs up with swp and tmp files
-" set list listchars=tab:»·,trail:· " Display extra whitespace
-" set clipboard=unnamed             " use OS clipboard
-
 " Vertical line at 80 characters
 set textwidth=80
 set colorcolumn=+1
@@ -151,158 +144,202 @@ let g:netrw_liststyle=3
 " Enable built-in matchit plugin
 runtime macros/matchit.vim
 
-let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+set grepprg=ag
+
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 " }}}
 
 
 " Plugins {{{
 
-filetype off                  " required by Vundle
+filetype off " required by Vundle
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-obsession'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'wincent/Command-T'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'jgdavey/tslime.vim'
-Plugin 'ervandew/supertab'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
-Plugin 'bufexplorer.zip'
-Plugin 'greplace.vim'
-Plugin 'Rename'
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdtree'
+" Vundle itself
+Plugin 'gmarik/Vundle.vim'                " https://github.com/gmarik/Vundle.vim
+
+" Ruby-specific
+Plugin 'vim-ruby/vim-ruby'                " https://github.com/vim-ruby/vim-ruby
+Plugin 'kana/vim-textobj-user'            " https://github.com/kana/vim-textobj-user
+Plugin 'nelstrom/vim-textobj-rubyblock'   " https://github.com/nelstrom/vim-textobj-rubyblock
+Plugin 'scrooloose/syntastic'             " https://github.com/scrooloose/syntastic
+
+" Searching and Navigation
+Plugin 'scrooloose/nerdtree'              " https://github.com/scrooloose/nerdtree
+Plugin 'skwp/greplace.vim'                " https://github.com/skwp/greplace.vim
+Plugin 'rking/ag.vim'                     " https://github.com/rking/ag.vim
+Plugin 'christoomey/vim-tmux-navigator'   " https://github.com/christoomey/vim-tmux-navigator
+Plugin 'ctrlpvim/ctrlp.vim'               " https://github.com/ctrlpvim/ctrlp.vim
+
+" Look and Feel
+Plugin 'altercation/vim-colors-solarized' " https://github.com/altercation/vim-colors-solarized
+Plugin 'bling/vim-airline'                " https://github.com/bling/vim-airline
+
+" Tim Pope
+Plugin 'tpope/vim-fugitive'               " https://github.com/tpope/vim-fugitive
+Plugin 'tpope/vim-git'                    " https://github.com/tpope/vim-git
+Plugin 'tpope/vim-endwise'                " https://github.com/tpope/vim-endwise
+Plugin 'tpope/vim-surround'               " https://github.com/tpope/vim-surround
+Plugin 'tpope/vim-rails'                  " https://github.com/tpope/vim-rails
+Plugin 'tpope/vim-ragtag'                 " https://github.com/tpope/vim-ragtag
+Plugin 'tpope/vim-obsession'              " https://github.com/tpope/vim-obsession
+
+" Related to testing & tmux
+Plugin 'benmills/vimux'                   " https://github.com/benmills/vimux
+Plugin 'jgdavey/tslime.vim'               " https://github.com/jgdavey/tslime.vim
+Plugin 'thoughtbot/vim-rspec'             " https://github.com/thoughtbot/vim-rspec
+Plugin 'skalnik/vim-vroom'                " https://github.com/skalnik/vim-vroom
 
 " Related to vim-snipmate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+Plugin 'MarcWeber/vim-addon-mw-utils'     " https://github.com/MarcWeber/vim-addon-mw-utils
+Plugin 'tomtom/tlib_vim'                  " https://github.com/tomtom/tlib_vim
+Plugin 'garbas/vim-snipmate'              " https://github.com/garbas/vim-snipmate
+Plugin 'honza/vim-snippets'               " https://github.com/honza/vim-snippets
+
+" Other
+Plugin 'kchmck/vim-coffee-script'         " https://github.com/kchmck/vim-coffee-script
+Plugin 'tomtom/tcomment_vim'              " https://github.com/tomtom/tcomment_vim
+Plugin 'bronson/vim-trailing-whitespace'  " https://github.com/bronson/vim-trailing-whitespace
+Plugin 'ervandew/supertab'                " https://github.com/ervandew/supertab
+Plugin 'danro/rename.vim'                 " https://github.com/danro/rename.vim
+Plugin 'duff/vim-scratch'                 " https://github.com/duff/vim-scratch
+Plugin 'godlygeek/tabular'                " https://github.com/godlygeek/tabular
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()                         " required
+filetype plugin indent on                 " required
 
 " }}}
 
 
-" Mappings {{{
+" General Mappings {{{
 
 let mapleader = " "
 
-" General Vim
-map <Leader>x :Explore
-map <Leader>vi :tabe ~/.vimrc<cr>
-map <Leader>src :source ~/.vimrc<cr>:AirlineRefresh<cr>
-map <Leader>w <C-w>
-map <Leader>ra :%s/
-map <Leader>p :set paste<cr>o<esc>"*]p:set nopaste<cr> " Fix indentation on paste
-map <Leader>i mmgg=G`m<cr> " For indenting code
-map <Leader>ob :Obsession<cr>
+" Misc
+" map <leader>x :Explore
+map <leader>ev :tabe ~/.vimrc<CR>
+map <leader>q :source ~/.vimrc<CR>:AirlineRefresh<CR>
+map <leader>s :w<CR>
+map <leader>ra :%s/
+map <leader>p :set paste<CR>o<esc>"*]p:set nopaste<CR> " Fix indentation on paste
+map <leader>i mmgg=G`m<CR> " For indenting code
+map <leader>h :nohl<CR> " Clear highlights
+imap <C-[> <C-c> " Return to normal mode faster
+map <C-t> <esc>:tabnew<CR> " Open a new tab with Ctrl+T
+inoremap jj <C-c> " jj to switch back to normal mode
+nnoremap <leader><leader> <c-^> " Switch between the last two files
+map Q <Nop> " Disable Ex mode
+map K <Nop> " Disable K looking stuff up
+nmap <leader>O O<Esc> " Add new line ABOVE without leaving normal mode
 
-" Rails
-map <Leader>vm :RVmodel<cr>
-map <Leader>vv :RVview<cr>
-map <Leader>vc :RVcontroller<cr>
-map <Leader>vh :RVhelper
-map <Leader>sm :RSmodel
-map <Leader>sv :RSview
-map <Leader>sc :RScontroller
-map <Leader>sh :RShelper
-map <Leader>vf :RVfunctional<cr>
-
-" Rspec
-map <Leader>su :RSunittest
-map <Leader>vu :RVunittest<cr>
-map <Leader>u :Runittest<cr>
-map <Leader>rd :!bundle exec rspec % --format documentation<cr>
-map <Leader>r :call RunCurrentSpecFile()<cr>
-map <Leader>n :call RunNearestSpec()<cr>
-map <Leader>l :call RunLastSpec()<cr>
-map <Leader>a :call RunAllSpecs()<cr>
-
-" Git
-map <Leader>gca :Gcommit -am ""<LEFT>
-map <Leader>gc :Gcommit -m ""<LEFT>
-map <Leader>gs :Gstatus<cr>
-
-" Searching the file system
-map <C-n> :NERDTreeToggle<cr>
-
-" Launch BufExplorer
-map <C-b> :BufExplorerHorizontalSplit<cr>
-
-" Tcomment
-map <Leader>/ :TComment<cr>
+" Run 'git blame' on a selection of code
+vmap <leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
-map <Leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<cr>
-map <Leader>s :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<cr>
-map <Leader>vn :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<cr>
+map <leader>e :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+map <leader>- :split <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
+map <leader>vn :vnew <C-R>=escape(expand("%:p:h"), ' ') . '/'<CR>
 
-" Open a new tab with Ctrl+T
-map <C-t> <esc>:tabnew<cr>
+" Reminders :)
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 
-" Clear highlights
-map <Leader>h :nohl<cr>
+" }}}
 
-map <Leader>cn :cn<cr>
-map <Leader>cp :cp<cr>
 
-" Return to normal mode faster
-imap <C-[> <C-c>
+" Plugin-specific Mappings and Settings {{{
 
-" jj to switch back to normal mode
-inoremap jj <C-c>
+" NERDTree
+map <leader>\ :NERDTreeToggle<CR>
 
-" Switch between the last two files
-nnoremap <Leader><Leader> <c-^>
+" Tcomment
+map <leader>/ :TComment<CR>
 
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<cr>
-nnoremap <Right> :echoe "Use l"<cr>
-nnoremap <Up> :echoe "Use k"<cr>
-nnoremap <Down> :echoe "Use j"<cr>
+" Obsession
+map <leader>ob :Obsession<CR>
 
-" Disable Ex mode
-map Q <Nop>
+" vim-rspec
+map <leader>f :call RunCurrentSpecFile()<CR>
+map <leader>r :call RunNearestSpec()<CR>
+map <leader>l :call RunLastSpec()<CR>
+map <leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = 'call VimuxRunCommand("clear; spring rspec {spec}")'
+" let g:rspec_command = 'call VimuxRunCommand("clear; rspec {spec}")'
 
-" Disable K looking stuff up
-map K <Nop>
+" vroom.vim (alternative plugin to vim-rspec)
+" map <leader>r :VroomRunNearestTest<CR>
+" map <leader>f :VroomRunTestFile<CR>
+" map <leader>l :VroomRunLastTest<CR>
+" let g:vroom_use_vimux = 1
+" let g:vroom_use_colors = 1
+" let g:vroom_use_bundle_exec = 0
+" let g:vroom_map_keys = 0
+" let g:vroom_clear_screen = 0
 
-" Add new lines without leaving normal mode
-nmap <Leader>O O<Esc>
-nmap <cr> o<Esc>
+" Vimux
+" Prompt for a command to run map
+map <leader>vp :VimuxPromptCommand<CR>
+
+" Inspect runner pane map
+map <leader>vi :VimuxInspectRunner<CR>
+
+" Close vim tmux runner opened by VimuxRunCommand. If a pane is closed manually,
+" the vim-rspec commands will no longer cause a new pane to open. Calling
+" :VimuxCloseRunner() will 'reset' Vimux, after which the vim-rspec commands
+" will pop open a new pane as they did initially.
+map <leader>vq :VimuxCloseRunner<CR>
+
+" Zoom the tmux runner page
+map <leader>vz :VimuxZoomRunner<CR>
+
+" Set the size of the vimux window.
+let g:VimuxHeight = "30"
+
+" CtrlP
+map <leader>t <C-p>
+map <leader>y :CtrlPBuffer<CR>
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_max_height = 15
+
+" CtrlP -> override <C-o> to provide options for how to open files
+let g:ctrlp_arg_map = 1
+
+" CtrlP -> files matched are ignored when expanding wildcards
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*.,*/.DS_Store
+
+" CtrlP -> directories to ignore when fuzzy finding
+let g:ctrlp_custom_ignore = '\v[\/]((node_modules)|\.(git|svn|grunt|sass-cache))$'
+
+" Custom rails.vim commands
+command! Rroutes :e config/routes.rb
+command! RTroutes :tabe config/routes.rb
+command! RSroutes :sp config/routes.rb
+command! RVroutes :vs config/routes.rb
+command! Rfactories :e spec/factories.rb
+command! RTfactories :tabe spec/factories.rb
+command! RSfactories :sp spec/factories.rb
+command! RVfactories :vs spec/factories.rb
+
+" vim-scratch
+map <C-s> :Sscratch<CR>
 
 " }}}
 
 
 " Commands {{{
+
+" specify syntax highlighting for specific files
+autocmd Bufread,BufNewFile *.spv set filetype=php
+autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 
 " When loading text files, wrap them and don't split up words.
 au BufNewFile,BufRead *.txt setlocal lbr
@@ -310,22 +347,15 @@ au BufNewFile,BufRead *.txt setlocal nolist " Don't display whitespace
 
 " file formats
 autocmd Filetype gitcommit setlocal spell textwidth=72
-autocmd Filetype markdown setlocal wrap linebreak nolist textwidth=0 wrapmargin=0 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
-autocmd FileType sh,cucumber,ruby,yaml,html,zsh,vim setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd Filetype sh,markdown setlocal wrap linebreak nolist textwidth=0 wrapmargin=0 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
+autocmd FileType sh,cucumber,ruby,yaml,html,zsh,vim,css,scss setlocal shiftwidth=2 tabstop=2 expandtab
 
 " autoindent with two spaces, always expand tabs
 autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
 autocmd FileType ruby,eruby,yaml setlocal path+=lib
 
-" specify syntax highlighting for specific files
-autocmd Bufread,BufNewFile *.spv set filetype=php
-autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
-
 " Enable spellchecking for Markdown
 autocmd FileType markdown setlocal spell
-
-" Automatically wrap at 80 characters for Markdown
-autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Remove trailing whitespace on save for ruby files.
 au BufWritePre *.rb :%s/\s\+$//e
@@ -350,6 +380,7 @@ autocmd FilterWritePre * call SetDiffColors()
 
 
 " Airline (status line) {{{
+" https://github.com/bling/vim-airline
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -357,7 +388,6 @@ endif
 
 let g:airline_symbols.linenr = 'Ln'
 let g:airline_powerline_fonts=1
-" let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
@@ -366,7 +396,11 @@ let g:airline_right_sep=''
 
 " Colorscheme {{{
 
+" Light theme
+" set background=light
+" colorscheme solarized
+
+" Dark theme
 set background=dark
 colorscheme solarized
-
 " }}}
