@@ -40,6 +40,17 @@ append_to_zshrc() {
 }
 
 ################################################################################
+# Next, a little more setup...
+################################################################################
+
+set -e # Terminate script if anything exits with a non-zero value
+set -u # Prevent unset variables
+
+osname=$(uname)
+divider="====> "
+DOTFILES_DIR=$HOME/dotfiles
+
+################################################################################
 # Make sure we're on a Linux before continuing.
 ################################################################################
 
@@ -53,17 +64,6 @@ elif [[ "$osname" != 'Linux' ]]; then
 only supports Mac and Linux. Exiting..."
   exit 1
 fi
-
-################################################################################
-# Next, a little more setup...
-################################################################################
-
-set -e # Terminate script if anything exits with a non-zero value
-set -u # Prevent unset variables
-
-osname=$(uname)
-divider="====> "
-DOTFILES_DIR=$HOME/dotfiles
 
 ################################################################################
 # Update the system.
