@@ -155,9 +155,8 @@ fancy_echo "$divider Step 2: Installing oh-my-zsh..."
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
   rm -rf $HOME/.oh-my-zsh
-else
-  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 ################################################################################
 # 3. Setup basic directories
