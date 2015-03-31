@@ -12,8 +12,6 @@ export ZSH=$HOME/.oh-my-zsh
 export UPDATE_ZSH_DAYS=7
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git git-flow pow vagrant)
-
 source $ZSH/oh-my-zsh.sh
 # }}}
 
@@ -22,11 +20,11 @@ source $ZSH/oh-my-zsh.sh
 
 # Vim specific
 alias vi="vim"
-alias ct='ctags -R -V --exclude=.git'
+alias ct='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
 
 # Jump to quick edits
 alias ez='vim ~/.zshrc'
-alias ed='vim ~/.dotfiles'
+alias ed='vim ~/dotfiles'
 alias ev='vim ~/.vimrc'
 
 # General UNIX
@@ -35,12 +33,18 @@ alias cp='cp -iv'
 alias rm='rm -iv'
 alias df='df -h'
 alias du='du -h'
-alias mkdir='mkdir -p'
+alias mkdir='mkdir -pv'
 alias src='source ~/.zshrc'
 alias pi='ping -Anc 5 8.8.8.8'
-alias path="echo $PATH | tr -s ':' '\n'"
-
-# List direcory contents
+alias path='echo -e ${PATH//:/\\n}'
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .2='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
 alias lsa='ls -lahF'
 alias l='ls -lahF'
 alias ll='ls -lhF'
@@ -65,7 +69,7 @@ alias rg='rails generate'
 alias rs='rails server'
 alias rsp='rspec . --format documentation' #Run full test suite using Rspec
 alias rdb='rake db:migrate'
-alias rtp='rake db:test:prepare'
+alias rtp='rake test:prepare'
 alias bx='bundle exec'
 
 # Postgres
@@ -73,6 +77,13 @@ alias startpost='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/se
 alias stoppost='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
 alias statpost='ps aux | ag postgres'
 
+# rbenv
+alias rbu='cd $HOME/.rbenv/plugins/ruby-build && git pull && cd'
+alias rbv='rbenv versions'
+alias rbl='rbenv install -l'
+
+# Speedtest
+alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 # }}}
 
 
