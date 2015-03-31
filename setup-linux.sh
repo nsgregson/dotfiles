@@ -127,7 +127,7 @@ fancy_echo "Installing tree..."
 sudo aptitude install -y tree
 
 fancy_echo "Installing tmux (using tmux ppa)..."
-sudo add-apt-repository ppa:pi-rho/dev
+sudo add-apt-repository ppa:pi-rho/dev -y
 sudo aptitude update
 sudo aptitude install -y tmux
 
