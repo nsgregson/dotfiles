@@ -84,7 +84,7 @@ sudo aptitude update
 # 1. Install basic tools
 ################################################################################
 
-fancy_echo "$divider Step 2: Installing basic tools..."
+fancy_echo "$divider Step 1: Installing basic tools..."
 
 fancy_echo "Installing curl ..."
 sudo aptitude install -y curl
@@ -153,7 +153,8 @@ chsh -s $(which zsh)
 
 fancy_echo "$divider Step 2: Installing oh-my-zsh..."
 
-curl -L http://install.ohmyz.sh | sh
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > install.sh
+bash install.sh
 
 ################################################################################
 # 3. Setup basic directories
