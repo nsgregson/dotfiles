@@ -6,6 +6,10 @@
 # This script is intended to set up a new Linux (mainly Ubuntu) computer with my
 # dotfiles and other development preferences.
 # NOTE: This Ubuntu config is for a local dev machine, not a web-facing server.
+#
+# Much of this script was derived from thoughtbot's now unsupported Linux
+# version of Laptop.
+# https://github.com/thoughtbot/laptop/tree/39768b19959f74724ed0c0ea92e5b2f6f78e45c1
 ################################################################################
 
 ################################################################################
