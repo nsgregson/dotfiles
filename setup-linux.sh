@@ -153,8 +153,9 @@ chsh -s $(which zsh)
 
 fancy_echo "$divider Step 2: Installing oh-my-zsh..."
 
-curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > install.sh
-bash install.sh
+# curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > install.sh
+# bash install.sh
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 ################################################################################
 # 3. Setup basic directories
