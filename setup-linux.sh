@@ -217,6 +217,8 @@ fancy_echo "Done!"
 # 7. Install rbenv and ruby-build
 ################################################################################
 
+fancy_echo "$divider Step 7: Installing rbenv and ruby-build..."
+
 if [[ ! -d "$HOME/.rbenv" ]]; then
   fancy_echo "Installing rbenv..."
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -238,6 +240,8 @@ fi
 # 8. Install Ruby, Rails, and friends
 ################################################################################
 
+fancy_echo "$divider Step 8: Installing Ruby, Rails, and friends..."
+
 ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
 
 fancy_echo "Installing Ruby $ruby_version ..."
@@ -254,6 +258,17 @@ gem install bundler --no-document --pre
 
 fancy_echo "Installing Rails..."
 gem install rails
+
+################################################################################
+# 9. Install Google Chrome
+################################################################################
+
+fancy_echo "$divider Step 9: Installing Google Chrome..."
+
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+sudo aptitude update
+sudo aptitude install -y google-chrome-stable
 
 echo ""
 echo "**************************************************************"
