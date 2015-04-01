@@ -142,7 +142,6 @@ sudo aptitude install -y zsh
 
 fancy_echo "Installing node..."
 sudo aptitude install -y nodejs
-### end linux-components/debian-derivative-packages
 
 fancy_echo "Changing your shell to zsh ..."
 chsh -s $(which zsh)
@@ -236,6 +235,8 @@ if [[ ! -d "$HOME/.rbenv/plugins/ruby-build" ]]; then
   git clone https://github.com/sstephenson/ruby-build.git \
     ~/.rbenv/plugins/ruby-build
 fi
+
+source "$HOME/.zshrc"
 
 ################################################################################
 # 8. Install Ruby, Rails, and friends
