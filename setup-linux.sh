@@ -236,8 +236,6 @@ if [[ ! -d "$HOME/.rbenv/plugins/ruby-build" ]]; then
     ~/.rbenv/plugins/ruby-build
 fi
 
-source "$HOME/.zshrc"
-
 ################################################################################
 # 8. Install Ruby, Rails, and friends
 ################################################################################
