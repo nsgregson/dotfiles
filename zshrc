@@ -109,7 +109,7 @@ ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%}>"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%}═"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%}#"
 
-local user='%{$fg[green]%}%n@%m:%{$reset_color%}'
+local user='%{$fg[green]%}%m:%{$reset_color%}'
 local ssh_user='%{$fg[magenta]%}%n@%m:%{$reset_color%}'
 local pwd='%{$fg[blue]%}%~%{$reset_color%}'
 local git='%{$fg[white]%}$(git_prompt_info)$(git_prompt_status)%{$reset_color%}'
