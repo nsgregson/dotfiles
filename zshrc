@@ -123,7 +123,7 @@ _rubyprompt() {
 if [[ -n $SSH_CONNECTION ]]; then
   PROMPT="${ssh_user}${pwd}${git} $ "
 else
-  PROMPT="${user}${pwd}${git} $ "
+  PROMPT="${user}${pwd}${git} %% "
 fi
 
 RPROMPT='$(_rubyprompt)'
