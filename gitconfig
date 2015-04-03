@@ -1,23 +1,24 @@
 [user]
-    name = Joshua Steele
-    email = joshukraine@gmail.commit
+	name = Joshua Steele
+	email = joshukraine@gmail.com
 [alias]
 	co = checkout
-	st = status
+	st = status --short
 	ci = commit
 	br = branch
 	df = diff
 	dfs = diff --staged
 	logg = log --graph --decorate --oneline --abbrev-commit --all
+	sta = status
 [apply]
 	whitespace = nowarn
 [color]
 	ui = auto
-[branch "master"]
+[colorbranch "master"]
 	remote = origin
 	merge = refs/heads/master
 [core]
-	autocrlf = false
+	autotocrlf = false
 	safecrlf = true
 	editor = vim
 	excludesfile = ~/.gitignore_global
