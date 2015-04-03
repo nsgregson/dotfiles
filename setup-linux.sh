@@ -223,9 +223,6 @@ if [[ ! -d "$HOME/.rbenv" ]]; then
   fancy_echo "Installing rbenv..."
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 
-  # append_to_zshrc 'export PATH="$HOME/.rbenv/bin:$PATH"'
-  # append_to_zshrc 'eval "$(rbenv init - zsh --no-rehash)"' 1
-
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init - zsh)"
 fi
