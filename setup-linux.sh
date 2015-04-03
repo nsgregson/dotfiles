@@ -143,6 +143,9 @@ sudo aptitude install -y zsh
 fancy_echo "Installing node..."
 sudo aptitude install -y nodejs
 
+fancy_echo "Installing xclip..."
+sudo aptitude install -y xclip
+
 fancy_echo "Changing your shell to zsh ..."
 chsh -s $(which zsh)
 
