@@ -158,6 +158,9 @@ alias tsrc="tmux source-file ~/.tmux.conf"
 # Kill all tmux sessions
 alias tka="tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}" # tmux kill all sessions
 
+# Make tmux display solarized colors properly in vim.
+# http://stackoverflow.com/a/26288695
+alias tmux="TERM=screen-256color-bce tmux"
 # }}}
 
 
