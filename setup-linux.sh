@@ -98,9 +98,6 @@ sudo aptitude install -y python-software-properties
 fancy_echo "Installing build-essential..."
 sudo aptitude install -y build-essential
 
-# fancy_echo "Installing base ruby build dependencies..."
-# sudo aptitude build-dep -y ruby1.9.3
-
 fancy_echo "Installing libraries for common Ruby/Rails/gem dependencies..."
 sudo aptitude install -y libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev zlib1g-dev libssl-dev libyaml-dev libxml2-dev libffi-dev
 
@@ -134,9 +131,6 @@ sudo aptitude install -y tmux
 fancy_echo "Installing ImageMagick..."
 sudo aptitude install -y imagemagick
 
-# fancy_echo "Installing watch, to execute a program periodically and show the output ..."
-# sudo aptitude install -y watch
-
 fancy_echo "Installing zsh..."
 sudo aptitude install -y zsh
 
@@ -146,8 +140,13 @@ sudo aptitude install -y nodejs
 fancy_echo "Installing xclip..."
 sudo aptitude install -y xclip
 
-fancy_echo "Changing your shell to zsh ..."
-chsh -s $(which zsh)
+fancy_echo "Installing gnome-tweak-tool..."
+sudo aptitude install gnome-tweak-tool
+
+fancy_echo "Installing Terminator!!! :D ..."
+sudo add-apt-repository ppa:gnome-terminator
+sudo aptitude update
+sudo aptitude install terminator
 
 ################################################################################
 # 2. Install oh-my-zsh
@@ -159,6 +158,9 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
   rm -rf $HOME/.oh-my-zsh
 fi
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+fancy_echo "Changing your shell to zsh ..."
+chsh -s $(which zsh)
 
 ################################################################################
 # 3. Setup basic directories
