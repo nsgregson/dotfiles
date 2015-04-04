@@ -2,7 +2,7 @@
 
 These are my dotfiles and general system preferences adapted (loosely speaking) for Ubuntu. They'll probably work fine with any Debian-based distro, but I've only tested them on Ubuntu.
 
-**Running OS X? Check out my the [master branch](https://github.com/joshukraine/dotfiles).**
+**Running OS X? Check out the [master branch](https://github.com/joshukraine/dotfiles).**
 
 ### Installation
 
