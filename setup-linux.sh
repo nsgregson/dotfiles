@@ -141,12 +141,12 @@ fancy_echo "Installing xclip..."
 sudo aptitude install -y xclip
 
 fancy_echo "Installing gnome-tweak-tool..."
-sudo aptitude install gnome-tweak-tool
+sudo aptitude install -y gnome-tweak-tool
 
 fancy_echo "Installing Terminator!!! :D ..."
-sudo add-apt-repository ppa:gnome-terminator
+sudo add-apt-repository ppa:gnome-terminator -y
 sudo aptitude update
-sudo aptitude install terminator
+sudo aptitude install -y terminator
 
 ################################################################################
 # 2. Install oh-my-zsh
