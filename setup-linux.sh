@@ -169,10 +169,10 @@ fancy_echo "$divider Step 4: Installing dotfiles..."
 
 cd $HOME
 
-if [[ -d $DOTFILES ]]; then
+if [[ -d $DOTFILES_DIR ]]; then
   fancy_echo "Backing up old dotfiles to $HOME/old_dotfiles_backup..."
   rm -rf $OLD_DOTFILES_BACKUP
-  cp -R $DOTFILES $OLD_DOTFILES_BACKUP
+  cp -R $DOTFILES_DIR $OLD_DOTFILES_BACKUP
 fi
 
 git clone -b linux https://github.com/joshukraine/dotfiles.git $DOTFILES_DIR
