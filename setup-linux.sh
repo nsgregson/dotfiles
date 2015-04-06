@@ -166,7 +166,7 @@ mkdir -p $HOME/src
 # 4. Setup dotfiles
 ################################################################################
 
-fancy_echo "$divider Step 4: Cloning dotfiles repo to ${DOTFILES_DIR} ..."
+fancy_echo "$divider Step 4: Installing dotfiles..."
 
 if [[ -d $DOTFILES_DIR ]]; then
   fancy_echo "Backing up old dotfiles to $HOME/old_dotfiles_backup..."
@@ -175,8 +175,8 @@ if [[ -d $DOTFILES_DIR ]]; then
   rm -rf $DOTFILES_DIR
 fi
 
+fancy_echo "Cloning joshukraine/dotfiles repo to ${DOTFILES_DIR} ..."
 git clone -b linux https://github.com/joshukraine/dotfiles.git $DOTFILES_DIR
-fancy_echo "$divider Step 4: Installing dotfiles..."
 
 source "$DOTFILES_DIR/install/symlink_dotfiles.sh"
 fancy_echo "Dotfiles setup complete!"
