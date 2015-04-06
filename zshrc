@@ -49,6 +49,7 @@ alias l='ls -lahF'
 alias ll='ls -lhF'
 alias la='ls -lAhF'
 alias lf='ls -F'
+alias update='sudo aptitude update && sudo aptitude upgrade'
 
 # Tree
 alias t2='tree -FL 2'
