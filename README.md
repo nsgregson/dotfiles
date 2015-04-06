@@ -23,7 +23,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/joshukraine/dotfiles/linux/se
 Want to read through the script first?
 
 ```sh
-wget -qO- https://raw.githubusercontent.com/joshukraine/dotfiles/linux/setup-linux.sh
+wget -qO- https://raw.githubusercontent.com/joshukraine/dotfiles/linux/setup-linux.sh > setup-linux.sh
 less setup-linux.sh
 bash setup-linux.sh 2>&1 | tee ~/setup-linux.log
 ```
