@@ -11,11 +11,15 @@ set -e # Terminate script if anything exits with a non-zero value
 set -u # Prevent unset variables
 
 ################################################################################
-# Set some variables
+# Initial setup
 ################################################################################
 
 DOTFILES_DIR=$HOME/dotfiles
 files="gemrc gitignore_global gitconfig tmux.conf railsrc vimrc zshrc"
+
+fancy_echo() {
+  printf "\n%b\n" "$1"
+}
 
 cd $HOME
 

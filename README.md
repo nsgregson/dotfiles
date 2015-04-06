@@ -13,11 +13,21 @@ bash <(wget -qO- https://raw.githubusercontent.com/joshukraine/dotfiles/linux/se
 ```
 
 Want to read through the script first?
+
 ```sh
 wget -qO- https://raw.githubusercontent.com/joshukraine/dotfiles/linux/setup-linux.sh
 less setup-linux.sh
 bash setup-linux.sh 2>&1 | tee ~/setup-linux.log
 ```
+
+Just want to install and symlink the dotfiles?
+
+```sh
+git clone -b linux https://github.com/joshukraine/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+source ./install/symlink_dotfiles.sh
+```
+
 
 ### What does it do?
 
