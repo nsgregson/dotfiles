@@ -124,8 +124,10 @@ fancy_echo "Installing tree..."
 sudo aptitude install -y tree
 
 fancy_echo "Installing tmux (using tmux ppa)..."
-sudo add-apt-repository ppa:pi-rho/dev -y
-sudo aptitude update
+if grep -qiE 'precise|saucy|trusty|utopic|vivid' /etc/os-release; then
+  sudo add-apt-repository ppa:pi-rho/dev -y
+  sudo aptitude update
+fi
 sudo aptitude install -y tmux
 
 fancy_echo "Installing ImageMagick..."
