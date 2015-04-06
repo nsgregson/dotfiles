@@ -104,11 +104,13 @@ sudo aptitude install -y htop
 fancy_echo "Installing tree..."
 sudo aptitude install -y tree
 
-fancy_echo "Installing tmux (using tmux ppa)..."
 if grep -qiE 'precise|saucy|trusty|utopic|vivid' /etc/os-release; then
+  fancy_echo "Adding tmux ppa:pi-rho/dev..."
   sudo add-apt-repository ppa:pi-rho/dev -y
   sudo aptitude update
 fi
+
+fancy_echo "Installing tmux..."
 sudo aptitude install -y tmux
 
 fancy_echo "Installing ImageMagick..."
@@ -123,8 +125,10 @@ sudo aptitude install -y nodejs
 fancy_echo "Installing xclip..."
 sudo aptitude install -y xclip
 
-fancy_echo "Installing gnome-tweak-tool..."
-sudo aptitude install -y gnome-tweak-tool
+if grep -qiE 'precise|saucy|trusty|utopic|vivid|wheezy' /etc/os-release; then
+  fancy_echo "Installing gnome-tweak-tool..."
+  sudo aptitude install -y gnome-tweak-tool
+fi
 
 fancy_echo "Installing Terminator!!! :D ..."
 sudo aptitude install -y terminator
