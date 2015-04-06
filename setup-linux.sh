@@ -30,6 +30,7 @@ set -u # Prevent unset variables
 osname=$(uname)
 divider="====> "
 DOTFILES_DIR=$HOME/dotfiles
+OLD_DOTFILES_BACKUP=$HOME/old_dotfiles_backup
 
 ################################################################################
 # Make sure we're on a Linux before continuing.
@@ -165,17 +166,17 @@ mkdir -p $HOME/src
 # 4. Setup dotfiles
 ################################################################################
 
-fancy_echo "$divider Step 4: Installing dotfiles..."
-
-cd $HOME
+fancy_echo "$divider Step 4: Cloning dotfiles repo to ${DOTFILES_DIR} ..."
 
 if [[ -d $DOTFILES_DIR ]]; then
   fancy_echo "Backing up old dotfiles to $HOME/old_dotfiles_backup..."
   rm -rf $OLD_DOTFILES_BACKUP
   cp -R $DOTFILES_DIR $OLD_DOTFILES_BACKUP
+  rm -rf $DOTFILES_DIR
 fi
 
 git clone -b linux https://github.com/joshukraine/dotfiles.git $DOTFILES_DIR
+fancy_echo "$divider Step 4: Installing dotfiles..."
 
 source "$DOTFILES_DIR/install/symlink_dotfiles.sh"
 fancy_echo "Dotfiles setup complete!"
