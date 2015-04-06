@@ -20,25 +20,6 @@ fancy_echo() {
   printf "\n%b\n" "$1"
 }
 
-append_to_zshrc() {
-  local text="$1" zshrc
-  local skip_new_line="$2"
-
-  if [[ -w "$HOME/.zshrc.local" ]]; then
-    zshrc="$HOME/.zshrc.local"
-  else
-    zshrc="$HOME/.zshrc"
-  fi
-
-  if ! grep -Fqs "$text" "$zshrc"; then
-    if (( skip_new_line )); then
-      printf "%s\n" "$text" >> "$zshrc"
-    else
-      printf "\n%s\n" "$text" >> "$zshrc"
-    fi
-  fi
-}
-
 ################################################################################
 # Next, a little more setup...
 ################################################################################
@@ -265,12 +246,14 @@ gem install rails
 # 9. Install Google Chrome
 ################################################################################
 
-fancy_echo "$divider Step 9: Installing Google Chrome..."
+if grep -qiE 'precise|saucy|trusty|utopic|vivid' /etc/os-release; then
+  fancy_echo "$divider Step 9: Installing Google Chrome..."
 
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-sudo aptitude update
-sudo aptitude install -y google-chrome-stable
+  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+  sudo aptitude update
+  sudo aptitude install -y google-chrome-stable
+fi
 
 echo ""
 echo "**************************************************************"
