@@ -25,7 +25,7 @@ Just want to install and symlink the dotfiles?
 ```sh
 git clone -b linux https://github.com/joshukraine/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-source ./install/symlink_dotfiles.sh
+bash ./install/symlink_dotfiles.sh
 ```
 
 
