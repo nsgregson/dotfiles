@@ -1,6 +1,6 @@
 # My Linux Dotfiles
 
-These are my dotfiles and general system preferences adapted (loosely speaking) for Ubuntu. They'll probably work fine with any Debian-based distro, but I've only tested them on Ubuntu.
+These are my dotfiles and general system preferences adapted for Debian-type Linux systems.
 
 **Running OS X? Check out the [master branch](https://github.com/joshukraine/dotfiles).**
 
