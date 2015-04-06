@@ -15,7 +15,7 @@ set -u # Prevent unset variables
 ################################################################################
 
 DOTFILES_DIR=$HOME/dotfiles
-files="gemrc gitignore gitconfig tmux.conf railsrc vimrc zshrc"
+files="gemrc gitignore_global gitconfig tmux.conf railsrc vimrc zshrc"
 
 cd $HOME
 
