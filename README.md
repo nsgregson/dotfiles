@@ -4,6 +4,14 @@ These are my dotfiles and general system preferences adapted (loosely speaking) 
 
 **Running OS X? Check out the [master branch](https://github.com/joshukraine/dotfiles).**
 
+### Suppported distros
+
+This script has been successfully testing on the following Linux distros:
+
+* Ubuntu 14.04 LTS, 15.04 Beta 2
+* Lubuntu 14.10
+* Debian 7.8
+
 ### Installation
 
 To install with a one-liner, run this:
