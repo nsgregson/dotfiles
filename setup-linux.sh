@@ -179,7 +179,7 @@ fancy_echo "Cloning joshukraine/dotfiles repo to ${DOTFILES_DIR} ..."
 git clone -b linux https://github.com/joshukraine/dotfiles.git $DOTFILES_DIR
 
 fancy_echo "Copying Terminator profile into place..."
-cp -f terminator/config $HOME/.config/terminator/config
+cp -f $DOTFILES_DIR/terminator/config $HOME/.config/terminator/config
 
 source "$DOTFILES_DIR/install/symlink_dotfiles.sh"
 fancy_echo "Dotfiles setup complete!"
