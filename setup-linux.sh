@@ -175,9 +175,9 @@ if [[ -d $DOTFILES_DIR ]]; then
   rm -rf $DOTFILES_DIR
 fi
 
-fancy_echo "Cloning joshukraine/dotfiles repo to ${DOTFILES_DIR} ..."
+fancy_echo "Cloning nsgregson/dotfiles repo to ${DOTFILES_DIR} ..."
 
-git clone -b linux https://github.com/joshukraine/dotfiles.git $DOTFILES_DIR
+git clone -b linux https://github.com/nsgregson/dotfiles.git $DOTFILES_DIR
 source "$DOTFILES_DIR/install/symlink_dotfiles.sh"
 
 

@@ -17,13 +17,13 @@ This script has been successfully tested on the following Linux distros:
 To install with a one-liner, run this:
 
 ```sh
-bash <(wget -qO- https://raw.githubusercontent.com/joshukraine/dotfiles/linux/setup-linux.sh) 2>&1 | tee ~/setup-linux.log
+bash <(wget -qO- https://raw.githubusercontent.com/nsgregson/dotfiles/linux/setup-linux.sh) 2>&1 | tee ~/setup-linux.log
 ```
 
 Want to read through the script first?
 
 ```sh
-wget -qO- https://raw.githubusercontent.com/joshukraine/dotfiles/linux/setup-linux.sh > setup-linux.sh
+wget -qO- https://raw.githubusercontent.com/nsgregson/dotfiles/linux/setup-linux.sh > setup-linux.sh
 less setup-linux.sh
 bash setup-linux.sh 2>&1 | tee ~/setup-linux.log
 ```
@@ -31,7 +31,7 @@ bash setup-linux.sh 2>&1 | tee ~/setup-linux.log
 Just want to install and symlink the dotfiles?
 
 ```sh
-git clone -b linux https://github.com/joshukraine/dotfiles.git ~/dotfiles
+git clone -b linux https://github.com/nsgregson/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 bash ./install/symlink_dotfiles.sh
 ```
