@@ -28,6 +28,7 @@ cd $HOME
 ################################################################################
 
 fancy_echo "Creating symlinks..."
+
 for file in $files; do
   if [ -f $HOME/.$file ]; then
     fancy_echo ".$file already present. Backing up..."
@@ -37,4 +38,3 @@ for file in $files; do
   fancy_echo "-> Linking $DOTFILES_DIR/$file to $HOME/.$file..."
   ln -nfs "$DOTFILES_DIR/$file" "$HOME/.$file"
 done
-
