@@ -176,17 +176,19 @@ if [[ -d $DOTFILES_DIR ]]; then
 fi
 
 fancy_echo "Cloning joshukraine/dotfiles repo to ${DOTFILES_DIR} ..."
-git clone -b linux https://github.com/joshukraine/dotfiles.git $DOTFILES_DIR
 
+git clone -b linux https://github.com/joshukraine/dotfiles.git $DOTFILES_DIR
 source "$DOTFILES_DIR/install/symlink_dotfiles.sh"
 
-fancy_echo "Copying Terminator profile into place..."
 
 if [[ -f "$HOME/.config/terminator/config" ]]; then
+  fancy_echo "Backing up existing Terminator profile..."
   mv $HOME/.config/terminator/config $HOME/.config/terminator/config_backup
+  fancy_echo "Copying new Terminator profile into place..."
   cp $DOTFILES_DIR/terminator/config $HOME/.config/terminator/config
 else
   mkdir -p $HOME/.config/terminator
+  fancy_echo "Copying Terminator profile into place..."
   cp $DOTFILES_DIR/terminator/config $HOME/.config/terminator/config
 fi
 
