@@ -1,18 +1,5 @@
 [global_config]
 [keybindings]
-  copy = <Primary>c
-  paste = <Primary>v
-  close_window = <Primary>q
-  resize_up = <Primary><Alt>Up
-  resize_left = <Primary><Alt>Left
-  prev_tab = <Primary>Left
-  move_tab_right = <Primary><Shift>Right
-  close_term = <Primary>w
-  move_tab_left = <Primary><Shift>Left
-  new_tab = <Primary><Shift>t
-  resize_right = <Primary><Alt>Right
-  resize_down = <Primary><Alt>Down
-  next_tab = <Primary>Right
 [profiles]
   [[default]]
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
