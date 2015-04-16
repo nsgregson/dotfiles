@@ -75,7 +75,7 @@ alias bx='bundle exec'
 # Postgres
 alias startpost='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias stoppost='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
-alias statpost='ps aux | ag postgres'
+alias statpost='ps aux | grep postgres'
 
 # rbenv
 alias rbu='cd $HOME/.rbenv/plugins/ruby-build && git pull && cd'
